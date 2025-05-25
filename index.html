@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>치환 도구</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    textarea, input {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #replaceBtn {
+      background-color: #4CAF50;
+      color: white;
+    }
+    #copyBtn {
+      background-color: #2196F3;
+      color: white;
+    }
+    .section {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h2>텍스트 치환기</h2>
+
+  <div class="section">
+    <label for="originalText">🔤 원본 텍스트:</label>
+    <textarea id="originalText" rows="10" placeholder="여기에 텍스트를 입력하세요..."></textarea>
+  </div>
+
+  <div class="section">
+    <label for="findText">🔍 바꿀 단어(문장):</label>
+    <input type="text" id="findText" placeholder="예: 꾸깃꾸깃한 천 원">
+  </div>
+
+  <div class="section">
+    <label for="replaceText">✏️ 바꿀 내용:</label>
+    <input type="text" id="replaceText" placeholder="예: 오천원">
+  </div>
+
+  <button id="replaceBtn" onclick="replaceText()">치환하기</button>
+
+  <div class="section">
+    <label for="resultText">✅ 치환된 결과:</label>
+    <textarea id="resultText" rows="10" readonly placeholder="치환 결과가 여기에 표시됩니다."></textarea>
+    <button id="copyBtn" onclick="copyResult()">복사하기</button>
+  </div>
+
+  <script>
+    function replaceText() {
+      const original = document.getElementById("originalText").value;
+      const find = document.getElementById("findText").value;
+      const replaceWith = document.getElementById("replaceText").value;
+
+      if (!find) {
+        alert("바꿀 단어를 입력해주세요.");
+        return;
+      }
+
+      const result = original.split(find).join(replaceWith);
+      document.getElementById("resultText").value = result;
+    }
+
+    function copyResult() {
+      const resultField = document.getElementById("resultText");
+      resultField.select();
+      resultField.setSelectionRange(0, 99999); // 모바일 호환
+      document.execCommand("copy");
+      alert("결과가 복사되었습니다!");
+    }
+  </script>
+</body>
+</html>
