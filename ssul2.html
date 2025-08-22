@@ -21,16 +21,19 @@
 <body>
 
 <script>
-    // A사이트 주소 (정확한 URL 입력)
-    const allowedReferrer = "https://yousoo68.github.io/SSUL/"; 
+    // 사이트 경유 경로 체크
+    if (document.referrer !== "https://yousoo68.github.io/SSUL/") {
+        window.location.href = "https://yousoo68.github.io/SSUL/";
+    }
 
-    // 현재 페이지를 A사이트를 통해 들어왔는지 검사
-    if (document.referrer.indexOf(allowedReferrer) !== 0) {
-      // 리디렉션 또는 차단 메시지 표시
-      alert("섹시유수의 비밀 썰 사이트를 통해서만 접속할 수 있습니다.");
-      window.location.href = "https://yousoo68.github.io/SSUL/";
-    }
-  </script>
+    // 도메인 확인
+    if (window.location.hostname !== "yousoo68.github.io") {
+        document.body.innerHTML = "<h1 style='text-align: center; margin-top: 50px; color: #7c3aed;'>이 페이지는 섹시유수의 비밀 썰 사이트를 통해서만 접속할 수 있습니다.</h1>";
+        setTimeout(function () {
+            window.location.href = "https://yousoo68.github.io/SSUL/";
+        }, 5000);
+    }
+  </script>
 
 <img src="https://i.esdrop.com/d/f/aNVdqiKMYZ/YeN7gGFBWx.jpg" alt="ssul2">
 </body>
