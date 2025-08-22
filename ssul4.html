@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>첫경험 썰</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow-y: auto; /* 세로 스크롤 허용 */
-    }
-    img {
-      width: 100vw;      /* 가로 화면 꽉 차게 */
-      height: auto;      /* 세로는 비율에 맞게 자동 */
-      display: block;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>질싸할뻔한 썰</title>
+<style>
+body {
+  margin:0; display:flex; justify-content:center; align-items:center;
+  height:100vh; background:#0a0a0a; font-family:sans-serif; color:#000;
+  transition:0.5s;
+  overflow:hidden;
+}
+#pw {
+  padding:15px 25px; border:none; outline:none;
+  background:#111; color:#0ff; font-size:18px;
+  border-radius:12px; box-shadow:0 0 10px #0ff, 0 0 20px #0ff inset;
+  transition:0.3s;
+}
+#pw:focus { box-shadow:0 0 20px #0ff, 0 0 30px #0ff inset; }
+#content {
+  display:none; width:90%; max-width:800px; height:90vh;
+  overflow:auto; text-align:center; color:#000;
+  padding:20px; box-sizing:border-box;
+}
+</style>
 </head>
 <body>
-
-<script>
-    // A사이트 주소 (정확한 URL 입력)
-    const allowedReferrer = "https://yousoo68.github.io/SSUL/"; 
-
-    // 현재 페이지를 A사이트를 통해 들어왔는지 검사
-    if (document.referrer.indexOf(allowedReferrer) !== 0) {
-      // 리디렉션 또는 차단 메시지 표시
-      alert("섹시유수의 비밀 썰 사이트를 통해서만 접속할 수 있습니다.");
-      window.location.href = "https://yousoo68.github.io/SSUL/";
-    }
-  </script>
-
+<input id="pw" type="password" placeholder="Password">
+<div id="content">
 <b>일진들 장난감, 찐따 주제에 아다 땐 썰</b><br>
 난 중학교 시절 박◇빈 못지않게 다른 쪽으로 이름 좀 날렸음. 박◇빈은 친구가 없고, 애들이 투명인간 취급을 하지만 나는 그래도 친구도 있고 투명인간 취급은 안함 그래서 생기는 고충이 조금 심한 장난 정도? 아무튼 일진들에겐 장난감, 샌드백 혹은 이름 좀 날린 애들 키가 크다던지, 운동을 한다던지 그런 애들에게 재미를 주는 광대 였긴 했지만, 그래도 나는 여친이 있었음. 그렇게 막 "이야 얘가 날 왜 만나지?" 이럴 정도로 예쁘거나 공부를 잘하거나 집이 잘 살지는 않았지만, 서로 잘 맞았음.
 <br>
@@ -68,5 +64,18 @@
 근데 사실 잘하는게 더 이상한거긴 해.
 <br>
 아무튼 이때 아주 뜨겁게 아다때고 그 후에도 만나면 컨디션 평타이하일 경우 한 번 평타𝐨𝐫평타이상일 경우 두 번 했음. 만나면 무조건 한 번은 하니까 아예 네이버 쇼핑 성인인증이 돼있는 전여친이 바른생각 콘돔 대량구매 했음 ㅋㅋㅋ 젤도 나중에 애널로 할때 많이많이 듬뿍듬뿍 필요해서 3개 였나 4개 시켜서 쟁여놓고 ㅋㅋㅋㅋ 지금은 다 추억이노.
+<!-- 내용이 많아도 스크롤 가능 -->
+</div>
+<script>
+const input=document.getElementById('pw');
+const content=document.getElementById('content');
+input.addEventListener('input',()=> {
+  if(input.value==='b5EHywxgnIwdnoNFrU6TcRJfu'){
+    input.style.display='none';
+    content.style.display='block';
+    document.body.style.background='#fff';
+  }
+});
+</script>
 </body>
 </html>
