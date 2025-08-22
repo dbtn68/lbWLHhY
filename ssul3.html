@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>공섹썰 순한맛</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow-y: auto; /* 세로 스크롤 허용 */
-    }
-    img {
-      width: 100vw;      /* 가로 화면 꽉 차게 */
-      height: auto;      /* 세로는 비율에 맞게 자동 */
-      display: block;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공섹썰 순한맛</title>
+<style>
+body {
+  margin:0; display:flex; justify-content:center; align-items:center;
+  height:100vh; background:#0a0a0a; font-family:sans-serif; color:#000;
+  transition:0.5s;
+  overflow:hidden;
+}
+#pw {
+  padding:15px 25px; border:none; outline:none;
+  background:#111; color:#0ff; font-size:18px;
+  border-radius:12px; box-shadow:0 0 10px #0ff, 0 0 20px #0ff inset;
+  transition:0.3s;
+}
+#pw:focus { box-shadow:0 0 20px #0ff, 0 0 30px #0ff inset; }
+#content {
+  display:none; width:90%; max-width:800px; height:90vh;
+  overflow:auto; text-align:center; color:#000;
+  padding:20px; box-sizing:border-box;
+}
+</style>
 </head>
 <body>
-
-<script>
-    // A사이트 주소 (정확한 URL 입력)
-    const allowedReferrer = "https://yousoo68.github.io/SSUL/"; 
-
-    // 현재 페이지를 A사이트를 통해 들어왔는지 검사
-    if (document.referrer.indexOf(allowedReferrer) !== 0) {
-      // 리디렉션 또는 차단 메시지 표시
-      alert("섹시유수의 비밀 썰 사이트를 통해서만 접속할 수 있습니다.");
-      window.location.href = "https://yousoo68.github.io/SSUL/";
-    }
-  </script>
-
+<input id="pw" type="password" placeholder="Password">
+<div id="content">
 <span style="font-size:25pt;"><b><span style="color: rgb(255, 0, 0);">공</span>중화장실에서 <span style="color: rgb(255, 0, 0);">섹</span>스한 <span style="color: rgb(255, 0, 0);">썰</span>🌿</b></span>
 <span style="font-size:10pt;"><br>매산로 1가 37-9번지. 3층에 PC 하나 있는 좌식형 룸카페가 있었던 상가이다 물론 지금은 45cM 이라는 호프 요리주점으로 바뀌어 사라진 상태임. 당시 필자는 또래보다 비교적 작은 물건, 비교적 짧은 러닝타임 이라는 치명적인 페널티를 가지고 있었지만 콘돔 2팩, 즉 4개를 사면 하루에 다 쓰고 집에 귀가 할 정도로 정신나간 재생력과 체력이 있었음. 그야말로 교내 에서는 찐따, 샌드백, 광대, 장난감 이었을지언정 교외 에서 만큼은 타고난 성교 중독자였음.
 <br><br>
@@ -99,5 +95,18 @@
 <b>트렌스젠더</b> 인척 하고 나갔음.........
 <br><br>
 화장실에서 나와서 자주 가는 롤링파스타 가서 저녁 먹고 각자 귀가 하고 또 각자 집에서 폰☒ 하면서 하루를 마무리 했음.</span>
+<!-- 내용이 많아도 스크롤 가능 -->
+</div>
+<script>
+const input=document.getElementById('pw');
+const content=document.getElementById('content');
+input.addEventListener('input',()=> {
+  if(input.value==='b5EHywxgnIwdnoNFrU6TcRJfu'){
+    input.style.display='none';
+    content.style.display='block';
+    document.body.style.background='#fff';
+  }
+});
+</script>
 </body>
 </html>
