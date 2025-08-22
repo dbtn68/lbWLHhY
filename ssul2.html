@@ -1,40 +1,49 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>질싸할 뻔한 썰</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow-y: auto; /* 세로 스크롤 허용 */
-    }
-    img {
-      width: 100vw;      /* 가로 화면 꽉 차게 */
-      height: auto;      /* 세로는 비율에 맞게 자동 */
-      display: block;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공섹썰 매운맛</title>
+<style>
+body {
+  margin:0; display:flex; justify-content:center; align-items:center;
+  height:100vh; background:#0a0a0a; font-family:sans-serif; color:#000;
+  transition:0.5s;
+  overflow:hidden;
+}
+#pw {
+  padding:15px 25px; border:none; outline:none;
+  background:#111; color:#0ff; font-size:18px;
+  border-radius:12px; box-shadow:0 0 10px #0ff, 0 0 20px #0ff inset;
+  transition:0.3s;
+}
+#pw:focus { box-shadow:0 0 20px #0ff, 0 0 30px #0ff inset; }
+#content {
+  display:none; width:100%; height:100vh; /* 화면 꽉 채움 */
+  overflow:auto; text-align:center; background:#fff;
+}
+#content img {
+  width:100%; height:auto; /* 가로 꽉 채움, 비율 유지 */
+  display:block; margin:0 auto;
+  min-height:100vh; /* 세로로 화면보다 작으면 최소 화면 높이 유지 */
+}
+</style>
 </head>
 <body>
-
-<script>
-    // 사이트 경유 경로 체크
-    if (document.referrer !== "https://yousoo68.github.io/SSUL/") {
-        window.location.href = "https://yousoo68.github.io/SSUL/";
-    }
-
-    // 도메인 확인
-    if (window.location.hostname !== "yousoo68.github.io") {
-        document.body.innerHTML = "<h1 style='text-align: center; margin-top: 50px; color: #7c3aed;'>이 페이지는 섹시유수의 비밀 썰 사이트를 통해서만 접속할 수 있습니다.</h1>";
-        setTimeout(function () {
-            window.location.href = "https://yousoo68.github.io/SSUL/";
-        }, 5000);
-    }
-  </script>
-
+<input id="pw" type="password" placeholder="Password">
+<div id="content">
 <img src="https://i.esdrop.com/d/f/aNVdqiKMYZ/YeN7gGFBWx.jpg" alt="ssul2">
+</div>
+<script>
+const input=document.getElementById('pw');
+const content=document.getElementById('content');
+input.addEventListener('input',()=> {
+  if(input.value==='b5EHywxgnIwdnoNFrU6TcRJfu'){
+    input.style.display='none';
+    content.style.display='block';
+    document.body.style.background='#fff';
+  }
+});
+</script>
 </body>
 </html>
