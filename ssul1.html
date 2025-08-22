@@ -1,18 +1,38 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>접속 제한 페이지</title>
-    <script>
-        // 현재 페이지 URL 확인
-        const allowedHost = "yousoo68.github.io";
-        if (window.location.host !== allowedHost) {
-            // 허용되지 않은 곳이면 내용 숨기고 경고
-            document.body.innerHTML = "<h1>이 페이지는 섹시유수의 비밀 썰 사이트를 통해서만 접속할 수 있습니다.</h1>";
-            throw new Error("허용되지 않은 도메인에서 접속함");
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>접속 제한 페이지</title>
+<script>
+    // 허용된 경유 사이트
+    const allowedReferrer = "https://yousoo68.github.io/SSUL/";
+
+    // 세션 스토리지에 토큰 확인
+    const tokenKey = "ssulAccessToken";
+
+    // 경유 페이지에서 토큰 발급
+    function issueToken() {
+        sessionStorage.setItem(tokenKey, "granted");
+    }
+
+    // 접근 확인 함수
+    function checkAccess() {
+        // 리퍼러가 맞으면 토큰 발급
+        if (document.referrer === allowedReferrer) {
+            issueToken();
         }
-    </script>
+
+        // 토큰이 없으면 접근 차단
+        if (sessionStorage.getItem(tokenKey) !== "granted") {
+            document.body.innerHTML = "<h1>접속할 수 없는 페이지입니다.</h1>";
+            throw new Error("직접 접속 차단됨");
+        }
+    }
+
+    // 페이지 로드 시 접근 확인
+    window.onload = checkAccess;
+</script>
 </head>
 <body>
     <span style="font-size:25pt;"><b><span style="color: rgb(255, 0, 0);">공</span>중화장실에서 <span style="color: rgb(255, 0, 0);">섹</span>스한 <span style="color: rgb(255, 0, 0);">썰</span>🌶</b></span>
