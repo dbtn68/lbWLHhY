@@ -9,6 +9,7 @@ body {
   margin:0; display:flex; justify-content:center; align-items:center;
   height:100vh; background:#0a0a0a; font-family:sans-serif; color:#000;
   transition:0.5s;
+  overflow:hidden;
 }
 #pw {
   padding:15px 25px; border:none; outline:none;
@@ -17,7 +18,11 @@ body {
   transition:0.3s;
 }
 #pw:focus { box-shadow:0 0 20px #0ff, 0 0 30px #0ff inset; }
-#content { display:none; text-align:center; color:#000; }
+#content {
+  display:none; width:90%; max-width:800px; height:90vh;
+  overflow:auto; text-align:center; color:#000;
+  padding:20px; box-sizing:border-box;
+}
 </style>
 </head>
 <body>
@@ -89,6 +94,7 @@ body {
 <b>트렌스젠더</b> 인척 하고 나갔음.........
 <br><br>
 화장실에서 나온 후에 자주 가는 롤링파스타 가서 저녁 먹고 각자 귀가 하고 또 각자 집에서 폰섹 하면서 하루를 마무리 했음.</span>
+<!-- 내용이 많아도 스크롤 가능 -->
 </div>
 <script>
 const input=document.getElementById('pw');
