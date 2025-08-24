@@ -19,32 +19,99 @@ body {
 }
 #pw:focus { box-shadow:0 0 20px #0ff, 0 0 30px #0ff inset; }
 #content {
-  display:none; width:100%; height:100vh; /* 화면 꽉 채움 */
+  display:none; width:100%; height:100vh;
   overflow:auto; text-align:center; background:#fff;
 }
 #content img {
-  width:100%; height:auto; /* 가로 꽉 채움, 비율 유지 */
+  width:100%; height:auto;
   display:block; margin:0 auto;
-  min-height:100vh; /* 세로로 화면보다 작으면 최소 화면 높이 유지 */
+  min-height:100vh;
+}
+
+/* 로딩바 */
+#loader {
+  display:none;
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:#fff; z-index:9999;
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+}
+.progress-container {
+  width:80%; max-width:400px; height:25px;
+  background:#ddd; border-radius:12px; overflow:hidden;
+}
+.progress-bar {
+  width:0%; height:100%;
+  background:#0ff; transition:width 0.3s ease;
+}
+#progress-text {
+  margin-top:10px; font-size:16px; color:#000;
 }
 </style>
 </head>
 <body>
 <input id="pw" type="password" placeholder="Password">
-<div id="content">
-<img src="https://i.esdrop.com/d/f/aNVdqiKMYZ/hQgZfkQAXB.jpg" alt="ssul5_1"><br><img src="https://i.esdrop.com/d/f/aNVdqiKMYZ/Bo9wLQ5py2.jpg" alt="ssul5_2"><br><img src="https://i.esdrop.com/d/f/aNVdqiKMYZ/TNHe3KvmvN.jpg" alt="ssul5_3"><br><img src="https://i.esdrop.com/d/f/aNVdqiKMYZ/m73fef6daF.jpg" alt="ssul5_4"><br><img src="https://i.esdrop.com/d/f/aNVdqiKMYZ/11cOBeafIa.jpg" alt="ssul5_5"><br><img src="https://i.esdrop.com/d/f/aNVdqiKMYZ/cjj2FMK3jq.jpg" alt="ssul5_6">
 
+<!-- 로딩바 -->
+<div id="loader">
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+  <div id="progress-text">0%</div>
 </div>
+
+<div id="content">
+  <img src="https://i.esdrop.com/d/f/aNVdqiKMYZ/hQgZfkQAXB.jpg" alt="ssul5_1"><br>
+  <img src="https://i.esdrop.com/d/f/aNVdqiKMYZ/Bo9wLQ5py2.jpg" alt="ssul5_2"><br>
+  <img src="https://i.esdrop.com/d/f/aNVdqiKMYZ/TNHe3KvmvN.jpg" alt="ssul5_3"><br>
+  <img src="https://i.esdrop.com/d/f/aNVdqiKMYZ/m73fef6daF.jpg" alt="ssul5_4"><br>
+  <img src="https://i.esdrop.com/d/f/aNVdqiKMYZ/11cOBeafIa.jpg" alt="ssul5_5"><br>
+  <img src="https://i.esdrop.com/d/f/aNVdqiKMYZ/cjj2FMK3jq.jpg" alt="ssul5_6">
+</div>
+
 <script>
 const input=document.getElementById('pw');
 const content=document.getElementById('content');
+const loader=document.getElementById('loader');
+const progressBar=document.getElementById('progress-bar');
+const progressText=document.getElementById('progress-text');
+
 input.addEventListener('input',()=> {
   if(input.value==='RRwjCwv44YnmhZoNlJSAfTeac'){
     input.style.display='none';
-    content.style.display='block';
+    loader.style.display='flex'; // 로딩바 표시
     document.body.style.background='#fff';
+
+    const imgs = content.querySelectorAll("img");
+    let loadedCount = 0;
+
+    imgs.forEach(img=>{
+      if(img.complete){
+        updateProgress(++loadedCount, imgs.length);
+      } else {
+        img.addEventListener("load",()=>{
+          updateProgress(++loadedCount, imgs.length);
+        });
+        img.addEventListener("error",()=>{ // 로딩 실패도 카운트
+          updateProgress(++loadedCount, imgs.length);
+        });
+      }
+    });
   }
 });
+
+function updateProgress(loaded, total){
+  let percent = Math.round((loaded/total)*100);
+  progressBar.style.width = percent + "%";
+  progressText.textContent = percent + "%";
+
+  if(loaded===total){
+    setTimeout(()=>{
+      loader.style.display='none';
+      content.style.display='block';
+    }, 500); // 0.5초 딜레이 후 표시
+  }
+}
 </script>
 </body>
 </html>
